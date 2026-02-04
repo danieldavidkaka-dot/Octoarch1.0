@@ -1,0 +1,7 @@
+{
+  "name": "@arch/arch-sdk",
+  "version": "0.1.0",
+  "description": "SDK local",
+  "main": "src/index.js",
+  "type": "commonjs"
+}
