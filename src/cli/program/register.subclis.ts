@@ -3,6 +3,7 @@ import type { OpenClawConfig } from "../../config/config.js";
 import { isTruthyEnvValue } from "../../infra/env.js";
 import { buildParseArgv, getPrimaryCommand, hasHelpOrVersion } from "../argv.js";
 import { resolveActionArgs } from "./helpers.js";
+import process from "node:process"; // Aseguramos importar process por si acaso
 
 type SubCliRegistrar = (program: Command) => Promise<void> | void;
 
@@ -32,6 +33,36 @@ const loadConfig = async (): Promise<OpenClawConfig> => {
 };
 
 const entries: SubCliEntry[] = [
+  // --- INICIO COMANDO ARCH (NUEVO) ---
+  {
+    name: "arch",
+    description: "Arch Analysis Tool",
+    register: async (program) => {
+      // Importamos tu comando desde la carpeta commands
+      const { archCommand } = await import("../../commands/arch.js");
+
+      program
+        .command("arch")
+        .description("Run Arch analysis using custom templates")
+        .option("-t, --template <name>", "Template key (DEV, DOC_GEN, etc)")
+        .option("-i, --input <text>", "Input text to analyze")
+        .action(async (opts) => {
+          // Creamos un adaptador básico para simular el 'RuntimeEnv'
+          const runtimeAdapter = {
+            log: console.log,
+            error: console.error,
+            exit: (code: number) => process.exit(code),
+            config: {},
+            env: process.env,
+          };
+          
+          // @ts-ignore - Ignoramos error de tipo estricto para el mock
+          await archCommand(runtimeAdapter, opts);
+        });
+    },
+  },
+  // --- FIN COMANDO ARCH ---
+  
   {
     name: "acp",
     description: "Agent Control Protocol tools",
