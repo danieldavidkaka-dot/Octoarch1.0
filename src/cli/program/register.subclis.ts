@@ -46,6 +46,7 @@ const entries: SubCliEntry[] = [
         .description("Run Arch analysis using custom templates")
         .option("-t, --template <name>", "Template key (DEV, DOC_GEN, etc)")
         .option("-i, --input <text>", "Input text to analyze")
+        .option("-f, --file <path>", "File path to analyze") // <--- ¡ESTA ES LA LÍNEA QUE FALTABA!
         .action(async (opts) => {
           // Creamos un adaptador básico para simular el 'RuntimeEnv'
           const runtimeAdapter = {
