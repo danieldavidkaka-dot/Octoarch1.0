@@ -62,13 +62,27 @@ function resolveMode(cfg: OpenClawConfig): "local" | "remote" {
   return cfg.gateway?.mode === "remote" ? "remote" : "local";
 }
 
+const OCTO_ASCII = `
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+██░▄▄▄░██░▄▄▄░██▄▄▄██░▄▄▄░██░▄▄▄░██░▄▄▄░██░▄▄▄░██░█░██
+██░█░█░██░█░░░░░█░░░██░█░█░██░█▄▄██░█▄▄▀██░█░░░██░█▄██
+██░▀▀▀░██░▀▀▀░░░█░░░██░▀▀▀░██░█░█░██░█░█░██░▀▀▀░██░█░██
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+                   🐙 OCTOARCH 🐙                     
+`;
+
 export async function doctorCommand(
   runtime: RuntimeEnv = defaultRuntime,
   options: DoctorOptions = {},
 ) {
   const prompter = createDoctorPrompter({ runtime, options });
-  printWizardHeader(runtime);
-  intro("OpenClaw doctor");
+  
+  // printWizardHeader(runtime); // <-- ELIMINADA LA LANGOSTA VIEJA 🦞🚫
+  
+  // INYECTAMOS EL PULPO 🐙✅
+  console.log(OCTO_ASCII);
+
+  intro("Octoarch Doctor"); // <-- NUEVO TÍTULO
 
   const root = await resolveOpenClawPackageRoot({
     moduleUrl: import.meta.url,

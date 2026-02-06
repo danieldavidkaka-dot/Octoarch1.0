@@ -1,4 +1,4 @@
-const DEFAULT_TAGLINE = "All your chats, one OpenClaw.";
+const DEFAULT_TAGLINE = "All your chats, one Octoarch.";
 
 const HOLIDAY_TAGLINES = {
   newYear:
@@ -6,14 +6,14 @@ const HOLIDAY_TAGLINES = {
   lunarNewYear:
     "Lunar New Year: May your builds be lucky, your branches prosperous, and your merge conflicts chased away with fireworks.",
   christmas:
-    "Christmas: Ho ho ho—Santa's little claw-sistant is here to ship joy, roll back chaos, and stash the keys safely.",
+    "Christmas: Ho ho ho—Santa's little octo-sistant is here to ship joy, roll back chaos, and stash the keys safely.",
   eid: "Eid al-Fitr: Celebration mode: queues cleared, tasks completed, and good vibes committed to main with clean history.",
   diwali:
     "Diwali: Let the logs sparkle and the bugs flee—today we light up the terminal and ship with pride.",
   easter:
     "Easter: I found your missing environment variable—consider it a tiny CLI egg hunt with fewer jellybeans.",
   hanukkah:
-    "Hanukkah: Eight nights, eight retries, zero shame—may your gateway stay lit and your deployments stay peaceful.",
+    "Hanukkah: Eight nights, eight arms, zero shame—may your gateway stay lit and your deployments stay peaceful.",
   halloween:
     "Halloween: Spooky season: beware haunted dependencies, cursed caches, and the ghost of node_modules past.",
   thanksgiving:
@@ -23,10 +23,10 @@ const HOLIDAY_TAGLINES = {
 } as const;
 
 const TAGLINES: string[] = [
-  "Your terminal just grew claws—type something and let the bot pinch the busywork.",
+  "Your terminal just grew tentacles—type something and let the bot handle the busywork.",
   "Welcome to the command line: where dreams compile and confidence segfaults.",
   'I run on caffeine, JSON5, and the audacity of "it worked on my machine."',
-  "Gateway online—please keep hands, feet, and appendages inside the shell at all times.",
+  "Gateway online—please keep hands, feet, and tentacles inside the shell at all times.",
   "I speak fluent bash, mild sarcasm, and aggressive tab-completion energy.",
   "One CLI to rule them all, and one more restart because you changed the port.",
   "If it works, it's automation; if it breaks, it's a \"learning opportunity.\"",
@@ -40,8 +40,8 @@ const TAGLINES: string[] = [
   "Hot reload for config, cold sweat for deploys.",
   "I'm the assistant your terminal demanded, not the one your sleep schedule requested.",
   "I keep secrets like a vault... unless you print them in debug logs again.",
-  "Automation with claws: minimal fuss, maximal pinch.",
-  "I'm basically a Swiss Army knife, but with more opinions and fewer sharp edges.",
+  "Automation with reach: minimal fuss, maximal efficiency.",
+  "I'm basically a Swiss Army knife, but with eight arms and fewer sharp edges.",
   "If you're lost, run doctor; if you're brave, run prod; if you're wise, run tests.",
   "Your task has been queued; your dignity has been deprecated.",
   "I can't fix your code taste, but I can fix your build and your backlog.",
@@ -59,14 +59,14 @@ const TAGLINES: string[] = [
   "Your config is valid, your assumptions are not.",
   "I don't just autocomplete—I auto-commit (emotionally), then ask you to review (logically).",
   'Less clicking, more shipping, fewer "where did that file go" moments.',
-  "Claws out, commit in—let's ship something mildly responsible.",
-  "I'll butter your workflow like a lobster roll: messy, delicious, effective.",
-  "Shell yeah—I'm here to pinch the toil and leave you the glory.",
+  "Tentacles out, commit in—let's ship something mildly responsible.",
+  "I'll juggle your workflow like I have eight hands: messy, chaotic, effective.",
+  "Ink yeah—I'm here to wrap up the toil and leave you the glory.",
   "If it's repetitive, I'll automate it; if it's hard, I'll bring jokes and a rollback plan.",
   "Because texting yourself reminders is so 2024.",
   "Your inbox, your infra, your rules.",
   'Turning "I\'ll reply later" into "my bot replied instantly".',
-  "The only crab in your contacts you actually want to hear from. 🦞",
+  "The only cephalopod in your contacts you actually want to hear from. 🐙",
   "Chat automation for people who peaked at IRC.",
   "Because Siri wasn't answering at 3AM.",
   "IPC, but it's your phone.",
@@ -253,7 +253,7 @@ export function activeTaglines(options: TaglineOptions = {}): string[] {
 
 export function pickTagline(options: TaglineOptions = {}): string {
   const env = options.env ?? process.env;
-  const override = env?.OPENCLAW_TAGLINE_INDEX;
+  const override = env?.OCTOARCH_TAGLINE_INDEX;
   if (override !== undefined) {
     const parsed = Number.parseInt(override, 10);
     if (!Number.isNaN(parsed) && parsed >= 0) {

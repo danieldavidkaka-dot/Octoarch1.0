@@ -5,11 +5,11 @@
   "type": "module",
   "dependencies": {
     "nostr-tools": "^2.23.0",
-    "openclaw": "workspace:*",
+    "octoarch": "workspace:*",
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "octoarch": "workspace:*"
   },
   "openclaw": {
     "extensions": [
